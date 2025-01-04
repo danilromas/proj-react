@@ -1,28 +1,28 @@
-import './index.scss';
 import React from 'react';
+import './index.scss';
 
 function App() {
-  const [count, setCount] = React.useState(0);
+  const [open, SetOpen] = React.useState(false);
 
   const onClickPlus = () => {
-    setCount(count + 1);
+    SetOpen(true)
   }
 
   const onClickMinus = () => {
-    setCount(count - 1);
-
-    if(count <= 0){
-      setCount(0);
-    }
+    SetOpen(false)
   }
-
+  
   return (
     <div className="App">
-      <div>
-        <h2>Счетчик:</h2>
-        <h1>{count}</h1>
-        <button onClick={onClickMinus} className="minus">- Минус</button>
-        <button onClick={onClickPlus} className="plus">Плюс +</button>
+      <button onClick={onClickPlus} className="open-modal-btn">✨ Открыть окно</button>
+      <div className={`overlay animated ${open ? 'show' : ''}`}>
+        <div className="modal">
+          <svg onClick={onClickMinus} height="200" viewBox="0 0 200 200" width="200">
+            <title />
+            <path d="M114,100l49-49a9.9,9.9,0,0,0-14-14L100,86,51,37A9.9,9.9,0,0,0,37,51l49,49L37,149a9.9,9.9,0,0,0,14,14l49-49,49,49a9.9,9.9,0,0,0,14-14Z" />
+          </svg>
+          <img src="https://media2.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" />
+        </div>
       </div>
     </div>
   );
